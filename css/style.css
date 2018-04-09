@@ -1,0 +1,124 @@
+/* Photo by Patrick Tomasso on Unsplash under CC0 license*/
+/* Photo by Brandi Redd on Unsplash under CC0 license */
+
+body {
+margin: 0;
+padding: 100px 0 0;
+box-sizing: border-box;
+font-family: 'Roboto', Helvetica, Arial, sans-serif;
+background-color: #E1F5FE;
+background-image: linear-gradient(90deg, rgba(0, 176, 255, 0.8) 10%, rgba(128, 216, 255, 0.8) 90%);
+background-size: cover;
+min-height: 100vh;
+}
+
+h1 {
+  margin: 0;
+  padding: 1em 2.5rem;
+  text-transform: uppercase;
+  color: #01579B;
+  font-size: 2em;
+  letter-spacing: 1px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  box-shadow: 2px 4px 6px 1px rgba(50, 50, 50, 0.14);
+}
+
+.container--empty {
+  box-shadow: none;
+  display: none;
+}
+
+.showInput {
+  float: right;
+  cursor: pointer;
+}
+
+.todoInput {
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+  border: 0.4em solid #01579B;
+  padding: 0.8em 1.3rem;
+  color: #01579B;
+  font-size: 1.2em;
+}
+
+.todoInput:focus {
+  outline: none;
+}
+
+.visible {
+  display: block;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.away {
+  margin-top: 30px;
+}
+
+.todoItem {
+  text-align: left;
+  font-size: 1.2em;
+  height: 50px;
+  line-height: 50px;
+  background-color: #01579B;
+  color: #FFFFFF;
+  padding-left: 1.5rem;
+  box-sizing: border-box;
+  text-shadow: 2px 2px 1px #333;
+}
+
+.todoItem:not(:first-of-type) {
+  border-top: 2px solid #FFFFFF;
+}
+
+.todoItem:hover span[class~="delete"] {
+  display:inline-block;
+}
+
+.todoItem--done {
+  background-color: #999999;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 1px #333333;
+  text-decoration: line-through solid #FFFFFF;
+}
+
+span[class~="delete"] {
+  display: none;
+  text-align: center;
+  width: 50px;
+  background-color: #FFFFFF;
+  line-height: 50px;
+  color: #01579B;
+  cursor: pointer;
+  float: right;
+  text-shadow: none;
+}
+
+span[class~="delete"]:hover {
+  color: #4181B4;
+}
+
+.todoItem--done span[class~="delete"] {
+  background-color: #FFFFFF;
+  color: #999999;
+}
+
+.todoItem--done span[class~="delete"]:hover {
+  color: #B3B3B3;
+}
+.todoItem:not(:first-of-type):last-of-type span[class~="delete"] {
+  line-height: 48px;
+}
