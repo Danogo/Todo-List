@@ -19,6 +19,12 @@
   <ul class="list"></ul>
 </div>
 
-<script type="text/javascript" src="js/main.js" ></script>
+<script type="text/javascript">
+    if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+      document.write('<script src="lib/main.js"><\/script>');
+    } else {
+      document.write('<script src="js/main.js"><\/script>')      ;
+    }
+</script>
 </body>
 </html>
