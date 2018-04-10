@@ -3,13 +3,12 @@
 
 body {
 margin: 0;
-padding: 100px 0 0;
+padding: 30px 0 0;
 box-sizing: border-box;
 font-family: 'Roboto', Helvetica, Arial, sans-serif;
 background-color: #E1F5FE;
 background-image: linear-gradient(90deg, rgba(0, 176, 255, 0.8) 10%, rgba(128, 216, 255, 0.8) 90%);
 background-size: cover;
-min-height: 100vh;
 }
 
 h1 {
@@ -22,7 +21,7 @@ h1 {
 }
 
 .container {
-  width: 100%;
+  width: 90%;
   max-width: 500px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -30,9 +29,9 @@ h1 {
   box-shadow: 2px 4px 6px 1px rgba(50, 50, 50, 0.14);
 }
 
-.container--empty {
+.container:nth-of-type(2) {
+  background-color: transparent;
   box-shadow: none;
-  display: none;
 }
 
 .showInput {
@@ -78,6 +77,8 @@ h1 {
   padding-left: 1.5rem;
   box-sizing: border-box;
   text-shadow: 2px 2px 1px #333;
+  box-shadow: 2px 4px 6px 1px rgba(50, 50, 50, 0.14);
+  transition: all 0.5s ease;
 }
 
 .todoItem:not(:first-of-type) {
@@ -93,6 +94,13 @@ h1 {
   color: #FFFFFF;
   text-shadow: 2px 2px 1px #333333;
   text-decoration: line-through solid #FFFFFF;
+}
+
+
+.todoItem--deleted {
+  opacity: 0;
+  margin-left: 180px;
+  transition: all 0.5s ease;
 }
 
 span[class~="delete"] {
@@ -121,4 +129,14 @@ span[class~="delete"]:hover {
 }
 .todoItem:not(:first-of-type):last-of-type span[class~="delete"] {
   line-height: 48px;
+}
+
+@media all and (min-width: 500px) {
+  body {
+    padding-top: 100px;
+  }
+
+  .container {
+    width: 100%;
+  }
 }

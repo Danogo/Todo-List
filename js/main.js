@@ -20,10 +20,7 @@ todoInput.addEventListener('keypress', (evt) => {
    let target = evt.target;
    //delete item if trash was clicked
    removeTodoItem(target);
-   //fixing box-shadow bug for second container with 0 height
-   if (todoList.children.length <= 0) {
-     todoList.parentNode.classList.add('container--empty');
-   }
+
  });
 
 showInputBtn.addEventListener('click', (evt) => {
@@ -33,6 +30,8 @@ showInputBtn.addEventListener('click', (evt) => {
   todoList.classList.toggle('away');
 });
 
+
+//============= Functions =================
 //adding new todo list item
 const addTodoItem = () => {
   //check if user typed anything
@@ -40,25 +39,36 @@ const addTodoItem = () => {
     console.log('Cannot add empty task');
     return;
   }
+  //create li element
   let newTodoEl = document.createElement('li');
-  newTodoEl.className = 'todoItem';
+  //grab text from input value
   let newTodoText = document.createTextNode(todoInput.value);
+  //insert text to new todo
   newTodoEl.appendChild(newTodoText);
+  //add icon trash
   newTodoEl.insertAdjacentHTML('beforeend', '<span class="fas fa-trash delete"></span>');
+  //add event listener to new todo, listening for click and switching its class to done
   newTodoEl.addEventListener('click', (evt) => {
     evt.currentTarget.classList.toggle('todoItem--done');
   });
+  //insert new todo to list
   todoList.appendChild(newTodoEl);
-  todoList.parentNode.classList.remove('container--empty');
+  //add proper class
+  newTodoEl.className = 'todoItem';
+  //clear input value
   todoInput.value = '';
 }
 
-//deleting listitem
+//deleting list item
 const removeTodoItem = (el) => {
   if (el.tagName === 'SPAN') {
     //grab list item which is parent of clicked trash span
     let listItem = el.parentNode;
-    //removing with fallback for IE
-    listItem.remove ? listItem.remove() : listItem.parentNode.removeChild(listItem);
+    listItem.classList.add('todoItem--deleted');
+    //delete after animation time
+    setTimeout(() => {
+      //removing with fallback for remove()
+      listItem.remove ? listItem.remove() : listItem.parentNode.removeChild(listItem);
+    }, 500);
   }
 }
