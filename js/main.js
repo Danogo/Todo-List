@@ -1,10 +1,11 @@
-//============= DOM holders =============
+//============= DOM caching =============
 const todoInput = document.querySelector('.todoInput');
 const showInputBtn = document.querySelector('.showInput');
 const todoList = document.querySelector('.list');
 
+
 //============ Event listeners with event handlers ===========
-todoInput.addEventListener('keypress', (evt) => {
+todoInput.addEventListener('keypress', evt => {
   //grabbing pressed key
   let pressed = evt.key || evt.keyCode;
   //if enter was pressed
@@ -14,16 +15,14 @@ todoInput.addEventListener('keypress', (evt) => {
   }
  });
 
-
- todoList.addEventListener('click', (evt) => {
+ todoList.addEventListener('click', evt => {
    //grab span element with trash
    let target = evt.target;
    //delete item if trash was clicked
    removeTodoItem(target);
-
  });
 
-showInputBtn.addEventListener('click', (evt) => {
+showInputBtn.addEventListener('click', evt => {
   //displaying input box
   todoInput.classList.toggle('visible');
   //adding space between input and todo items
@@ -48,7 +47,7 @@ const addTodoItem = () => {
   //add icon trash
   newTodoEl.insertAdjacentHTML('beforeend', '<span class="fas fa-trash delete"></span>');
   //add event listener to new todo, listening for click and switching its class to done
-  newTodoEl.addEventListener('click', (evt) => {
+  newTodoEl.addEventListener('click', evt => {
     evt.currentTarget.classList.toggle('todoItem--done');
   });
   //insert new todo to list
@@ -60,14 +59,16 @@ const addTodoItem = () => {
 }
 
 //deleting list item
-const removeTodoItem = (el) => {
+const removeTodoItem = el => {
+  // check if user clicked trash span
   if (el.tagName === 'SPAN') {
     //grab list item which is parent of clicked trash span
     let listItem = el.parentNode;
+    //change class for that li
     listItem.classList.add('todoItem--deleted');
-    //delete after animation time
+    //and delete it after animation time
     setTimeout(() => {
-      //removing with fallback for remove()
+      //removing with fallback for remove(), which is not supported in IE11-
       listItem.remove ? listItem.remove() : listItem.parentNode.removeChild(listItem);
     }, 500);
   }
